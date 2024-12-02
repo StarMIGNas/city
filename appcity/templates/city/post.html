@@ -1,0 +1,9 @@
+{%extends 'base.html' %}
+
+{% block content %}
+{{post.title}}
+{%if post.foto %}
+<p><img src="{{post.foto.url}}"></p>
+{%endif%}
+{{post.content|linebreaks}}
+{%endblock%}
