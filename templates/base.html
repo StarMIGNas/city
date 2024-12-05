@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Grid 1</title>
+    <link type="text/css" href="{% static 'city/css/main.css' %}" rel="stylesheet"/>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="item1"></div>
+        <header>
+            <h1>CITY</h1>
+            <nav>
+
+                <ul>
+                    {%for i in menu%}
+                    <li><a href='{% url i.url_name %}'>{{i.title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </header>
+            <article>
+              {% block content %} {%endblock%}
+
+            </article>
+            <aside>
+                {% if user.is_authenticated %}
+                <li> {{user.username}} </li>
+                {% endif %}
+                <h3>Авторизация</h3>
+                <ul>
+                    <li><a href="{% url 'users:login' %}">Войти</a></li>
+                    <li><a href="{% url 'users:logout' %}">Выйти</a></li>
+                </ul>
+            </aside>
+            <footer>
+                <h2>© 2024 Мой Сайт. Все права защищены.</h2>
+            </footer>
+
+
+    </div>
+</body>
+</html>

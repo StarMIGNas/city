@@ -1,0 +1,11 @@
+{%extends 'base.html' %}
+
+{% block content %}
+<h1>{{post.title}}</h1>
+{% if post.image %}
+    <img src="{{ post.image.url }}" alt="{{ post.title }}" style="max-width: 100%; height: auto;">
+{% else %}
+    <p>Изображение не загружено.</p>
+{% endif %}
+{{post.content|linebreaks}}
+{%endblock%}
